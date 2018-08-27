@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+        <link rel="stylesheet" href="stylesheet.css">
+        <meta charset="utf-8">
+        <title>HOME STYLING</title>
+    </head>
+
+    <body>
+        <div class="navigationbar">
+
+        {{>headergfxdonsolo}}
+
+
+        <h1>HOME</h1>
+<div class="form">
+
+
+<form  method="post">
+    <p id="errormessage"> {{ error }} </p>
+    <div class="pairs">
+        <p></p>
+        <input type="text" name="firstname" placeholder="firstname" >
+    </div>
+
+    <div class="pairs">
+        <p></p>
+    <input type="text" name="lastname" placeholder="lastname" >
+    <button id="submit-button" type="submit">Submit Signature</button>
+    </div>
+
+    <div class="pairs">
+    <p>Write in the box below!</p>
+    <canvas id="signature" type="text" width="600" height="150"></canvas>
+    <input id="signatureInput" type="hidden" name="signature" value="{{signatureImage}}">
+
+</form>
+    <button id="clearcanvas" type="button" name="clear">Clear Signature</button>
+</div>
+</div>
+
+{{> nav }}
+    </body>
+
+
+
+</html>

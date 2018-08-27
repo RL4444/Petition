@@ -1,0 +1,217 @@
+* {
+    box-sizing: border-box;
+    font-family: "Luckiest Guy", cursive;
+    background-color: white;
+}
+p {
+    font-size: 25px;
+}
+
+h1 {
+    margin-left: 7%;
+    font-size: 40px;
+}
+
+#petition-text {
+    width: 100%;
+}
+#Donald-Duck {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+.headergfx {
+    border: red 4px solid;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+.newuser {
+    margin-top: 100px;
+    margin-left: 7%;
+}
+
+.form {
+    left: 20%;
+    border: blue solid 6px;
+
+    /* display: inline-block; */
+}
+.homeform {
+    top: 50%;
+    font-size: 25px;
+    left: 20%;
+    border: blue solid 6px;
+    height: 600px;
+}
+
+#errormessage {
+    color: red;
+    font-size: 25px;
+}
+
+#bluebackground {
+    width: 100%;
+    height: auto;
+}
+
+.form {
+    top: 40%;
+}
+input {
+    width: 100%;
+    padding: 5px;
+    background-color: white;
+
+    /* float: left; */
+    max-width: 25%;
+}
+
+input p {
+    margin-left: 35%;
+}
+
+.pairs {
+    margin-left: 20%;
+}
+
+canvas {
+    top: 100px;
+    border: red solid 1px;
+    background-color: white;
+    color: black;
+    max-width: 600px;
+    max-height: 200px;
+}
+button {
+    position: relative;
+
+    background-color: red;
+    border-radius: 10px;
+    width: 80px;
+    height: 50px;
+}
+#login {
+    border: blue solid 6px;
+    width: 80%;
+    margin-left: 10%;
+}
+
+#logoutbutton {
+    box-sizing: border-box;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 5px;
+
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+}
+#loginsection {
+    display: block;
+}
+#loginbutton {
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid black;
+    padding: 5px;
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+#loginbox {
+    font-size: 25px;
+    margin-left: 25%;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid black;
+    padding: 5px;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+#returnhomebutton {
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid black;
+
+    padding: 5px;
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+#navbarlinks {
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.partial {
+    width: 100%;
+    color: red;
+    text-decoration: none;
+    background-color: rgb(72, 144, 205);
+    font-size: 40px;
+    padding: 20px;
+    margin-left: -10px;
+    width: 100%;
+    height: 100px;
+}
+.partial a {
+    text-decoration: none;
+}
+
+.placeholder {
+    margin-left: -10px;
+    width: 100%;
+    height: 250px;
+}
+.profileeditor {
+    top: 50%;
+    font-size: 25px;
+    left: 20%;
+    border: blue solid 6px;
+}
+
+input .blacktext {
+    color: black;
+    font-weight: bolder;
+}
+
+.citybox {
+    border: 1px solid red;
+}
+
+.listofsigners:after {
+    display: table;
+    clear: both;
+}
+.listofsigners {
+    left: 20%;
+    border: blue solid 6px;
+    height: 600px;
+}
+
+.flexcol {
+    float: left;
+    width: 33.33%;
+}
+.flexcol2 {
+    float: left;
+    width: 48%;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheet.css">
+        <meta charset="utf-8">
+        <title>{{city}} signers</title>
+    </head>
+
+    <body>
+
+<h1>This is the list of signers for <strong>{{city}}</strong></h1>
+
+
+<h2>Total signers: {{length}}</h2>
+
+<div class="citybox">
+
+
+<div class="listofsigners">
+
+    {{#content}}
+            <div class="flexcol2">
+                  {{#if homepage}}
+                    <a href="{{homepage}}">{{first_name}} {{last_name}}</a>
+                  {{else}}
+                    {{first_name}} {{last_name}}
+                  {{/if}}
+            </div>
+
+              <div class="flexcol2">
+                  {{#if age}}
+                    , {{age}}
+                  {{/if}}
+            </div>
+    <!-- <div class="date-signature">{{created_at}}</div> -->
+    {{/content}}
+
+</div>
+</div>
+<div class="placeholder">
+
+</div>
+
+<div class="return">
+  To see the list of all signers please click <a href="/viewsignatures">HERE</a>
+</div>
+</body>
+
+
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+        <link rel="stylesheet" href="stylesheet.css">
+        <meta charset="utf-8">
+        <title>HOME STYLING</title>
+    </head>
+
+    <body>
+        {{> headergfx}}
+
+        <h1>Welcome Friend!</h1>
+
+        <div id="login">
+
+                <form  method="post">
+                    <div class="pairs">
+                    <p>email</p>
+                    <input type="text" name="email" placeholder="email">
+                    </div>
+
+                    <div class="pairs">
+                    <p>password</p>
+                    <input type="password" name="password" placeholder="password">
+                    <button id="loginbutton" type="submit">login</button>
+                    </div>
+
+
+
+
+                </form>
+        </div>
+
+        <p id="errormessage"> {{ error }} </p>
+
+        <div class="newuser">
+
+
+            <p>new user with us?   <a href="/" type="button">  click here</a></p>
+
+
+
+        </div>
+
+
+
+
+    </body>
+
+
+
+</html>
