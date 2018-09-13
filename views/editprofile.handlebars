@@ -1,68 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
-        <link rel="stylesheet" href="/stylesheet.css">
+        <link rel="stylesheet" href="stylesheet.css">
         <meta charset="utf-8">
-        <title>Profile Editor</title>
     </head>
-
 <body>
+    <div id="profileeditorcontainer">
+            <div class="headbox">
+                <div id="lefthead">
+                    <h1 class="boldh1">  SAVE THE BEES</h1>
+                </div>
+                <div id="righticonsmall">
+                    <a href="/thankyoupage"> CHANGE SIGNATURE</a>
+                    <a href="/viewsignatures">OTHER SIGNERS</a>
+                    <a href="/loggedout">LOG OUT</a>
 
-{{>headergfxdonsolo}}
-
-{{>nav}}
-<div class="profileeditor">
-
-        <form  method="post">
-            {{#content}}
-
-            <h1>Please note only fields required filling are marked with *</h1>
-
-            <div class="pairs">
-            <p>*first name</p>
-            <input class="blacktext" type="text" name="first_name" placeholder= {{first_name}} value= {{first_name}}>
+                </div>
             </div>
 
-            <div class="pairs">
-            <p>*last name</p>
-            <input class="blacktext" type="text" name="last_name" placeholder={{last_name}} value={{last_name}}>
-                        </div>
-            <div class="pairs">
-            <p>*email</p>
-            <input class="blacktext" type="text" name="email" placeholder={{email}} value={{email}}>
+            <form  method="post">
+            <div id="contentbox">
+                    {{#content}}
+                    <div class="formitem">
+                        <input  type="text" name="first_name" placeholder= {{first_name}} value= {{first_name}}>
+                    </div>
+                    <div class="formitem">
+                        <input  type="text" name="last_name" placeholder={{last_name}} value={{last_name}}>
+                    </div>
+                    <div class="formitem">
+                        <input  type="text" name="email" placeholder={{email}} value={{email}}>
+                    </div>
+                    <div class="formitem">
+                        <input type="password" name="password" placeholder="type new password here" >
+                    </div>
+                    <div class="formitem">
+                        <input  type="text" name="age" placeholder={{age}} value={{age}}>
+                    </div>
+                    <div class="formitem">
+                        <input  type="text" name="city" placeholder={{city}} value={{city}}>
+                    </div>
+                    <div class="formitem">
+                        <input  type="text" name="homepage" placeholder="new url here" value=>
+                    </div>
+                    <div class="formitem">
+                        <button class="loginbutton" type="submit">UPDATE</button>
+                    </div>
+                    {{/content}}
+                </form>
+
             </div>
-
-            <div class="pairs">
-            <p>**password - please leave empty if no change required</p>
-            <input type="password" name="password" placeholder="type new password here" >
-            </div>
-
-            <div class="pairs">
-            <p>age</p>
-            <input class="blacktext" type="text" name="age" placeholder={{age}} value={{age}}>
-            </div>
-
-            <div class="pairs">
-            <p>city</p>
-            <input class="blacktext" type="text" name="city" placeholder={{city}} value={{city}}>
-            </div>
-
-            <div class="pairs">
-            <p>homepage url</p>
-            <input class="blacktext" type="text" name="homepage" placeholder="new url here" value=>
-            <button id="signupbutton" type="submit">UPDATE</button>
-            </div>
-
-            {{/content}}
-
-
-
-        </form>
-</div>
-<h1> Don't like your handwriting?
-<a href="/newsigner">sign again here</a>
-</h1>
-</body>
-
+        </div>
+    </body>
 </html>

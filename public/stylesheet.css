@@ -1,217 +1,363 @@
 * {
     box-sizing: border-box;
-    font-family: "Luckiest Guy", cursive;
-    background-color: white;
-}
-p {
-    font-size: 25px;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
 
-h1 {
-    margin-left: 7%;
-    font-size: 40px;
-}
+/* //////BACKGROUND */
 
-#petition-text {
+body {
+    /* background-color: rgb(213, 208, 150); */
+    background-color: rgba(217, 210, 152, 0.86);
+    background-position: right;
+    background-image: url("/background.jpg");
+    /* box-shadow: inset 0 0 0 2000px rgba(196, 224, 98, 0.34); */
     width: 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-attachment: fixed;
+    background-size: 90%;
+    min-height: 100vh;
 }
-#Donald-Duck {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
+
+/* ////////////////////////////////////////////////////// */
+/*
+Fonts used
+
+font-family: 'Roboto', sans-serif;  -- bold
+font-family: 'Open Sans', sans-serif;  -- light
+  */
+
+.boldh1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 6em;
+    color: white;
 }
-.headergfx {
-    border: red 4px solid;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+
+.lightsubhead {
+    font-family: "Open Sans", sans-serif;
+    font-weight: lighter;
+    font-size: 3em;
+    color: white;
+}
+
+/* ////////////////////////////LANDING PAGE////////////////////////// */
+
+.headbox {
+    background-color: rgba(117, 117, 117, 0.77);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-height: 15vh;
+}
+
+#lefthead {
+    margin-left: 1%;
+    width: 79%;
+}
+
+#righticon {
+    font-family: "Open Sans", sans-serif;
+    margin-top: 1%;
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+#righticon a {
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+}
+#righticon a:hover {
+    text-decoration: underline;
+    color: tomato;
+    font-size: 2.1em;
+    transition-duration: 0.4s;
+}
+#righticonsmall {
+    font-family: "Open Sans", sans-serif;
+    margin-top: 0.5%;
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+#righticonsmall a {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+}
+#righticonsmall a:hover {
+    text-decoration: underline;
+    color: tomato;
+    transition-duration: 0.4s;
+}
+
+#landingpagecontent {
+    flex-direction: row;
+}
+
+#contentbox {
+    flex-direction: column;
+    margin-left: 1%;
     width: 40%;
 }
-.newuser {
-    margin-top: 100px;
-    margin-left: 7%;
+
+#content {
+    background-color: rgba(117, 117, 117, 0.77);
+    border-top: 3px solid white;
+    margin-top: 1%;
+    flex-direction: column;
+    text-align: justify;
+    width: 100%;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.4em;
+    padding: 8px;
+    border-radius: 4px;
 }
 
-.form {
-    left: 20%;
-    border: blue solid 6px;
-
-    /* display: inline-block; */
+#links a {
+    text-decoration: none;
+    color: white;
+    font-size: 3em;
+    font-family: "Roboto", sans-serif;
 }
-.homeform {
-    top: 50%;
-    font-size: 25px;
-    left: 20%;
-    border: blue solid 6px;
-    height: 600px;
+#links a:hover {
+    text-decoration: underline;
+    color: tomato;
+    font-size: 3.3em;
+    transition-duration: 0.4s;
+}
+#links {
+    margin-top: 2%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* ////////////////////////////HEADER GFX STYLES////////////////////////////// */
+.headergfx {
+    text-align: center;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%;
+    background-color: rgba(180, 168, 182, 0.62);
+}
+
+/* //////////////////////////////LANDINGPAGE STYLING///////////////////////////////////////////////// */
+
+#landingpagecontainer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ////////////////////////LOG IN PAGE and REGISTER STYLES////////////////////////////////// */
+#loginpagecontainer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#login {
+    font-family: "Roboto", sans-serif;
+    margin-top: 10%;
+    flex-direction: column;
+    width: 40%;
+}
+
+.formitem input {
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    font-size: 3em;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.formitem p,
+h2 {
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    font-size: 1em;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.formitem canvas {
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    font-size: 3em;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+.formitem :focus {
+    background-color: rgb(224, 223, 42);
+}
+
+.loginbutton {
+    text-decoration: none;
+    color: black;
+    margin-top: 5%;
+    margin-left: 10%;
+    font-family: "Roboto", sans-serif;
+    font-size: 3em;
+    background-color: rgb(224, 223, 42);
+}
+.loginbutton a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    margin-top: 5%;
+    margin-left: 10%;
+    font-family: "Roboto", sans-serif;
+    font-size: 3em;
+    background-color: rgb(224, 223, 42);
+}
+#clear {
+    margin-top: 5%;
+    margin-left: 10%;
+    font-family: "Roboto", sans-serif;
+    font-size: 3em;
+    background-color: rgb(224, 223, 42);
+}
+.loginbutton:hover {
+    margin-top: 5%;
+    margin-left: 10%;
+    font-family: "Roboto", sans-serif;
+    font-size: 3.1em;
+    background-color: tomato;
+    cursor: pointer;
+}
+#clear:hover {
+    margin-top: 5%;
+    margin-left: 10%;
+    font-family: "Roboto", sans-serif;
+    font-size: 3.1em;
+    background-color: tomato;
+    cursor: pointer;
+}
+/* //////////////////////REGISTRATION///////////////////////////////////////// */
+
+#registrationpagecontainer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#registerbox {
+    font-family: "Roboto", sans-serif;
+    margin-top: 5%;
+    flex-direction: column;
+    width: 40%;
+}
+.subheadreg {
+    margin-left: 10%;
 }
 
 #errormessage {
-    color: red;
     font-size: 25px;
 }
+/* //////////////////////////////ADDITONAL INFO///////////////////////////////////////////////////// */
 
-#bluebackground {
+#addtionalinfocontainer {
+    min-height: 100vh;
     width: 100%;
-    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.form {
-    top: 40%;
-}
-input {
+/* ////////////////////////////////////NEW SIGNERS STYLES////////////////////////////////////////////////////////////// */
+
+#newsignercontainer {
+    min-height: 100vh;
     width: 100%;
-    padding: 5px;
-    background-color: white;
-
-    /* float: left; */
-    max-width: 25%;
+    display: flex;
+    flex-direction: column;
 }
 
-input p {
-    margin-left: 35%;
+#canvasbox {
+    font-family: "Roboto", sans-serif;
+    margin-top: 2%;
+    flex-direction: column;
+    width: 40%;
 }
-
-.pairs {
-    margin-left: 20%;
-}
-
 canvas {
     top: 100px;
-    border: red solid 1px;
     background-color: white;
     color: black;
     max-width: 600px;
     max-height: 200px;
 }
-button {
-    position: relative;
 
-    background-color: red;
-    border-radius: 10px;
-    width: 80px;
-    height: 50px;
-}
-#login {
-    border: blue solid 6px;
-    width: 80%;
-    margin-left: 10%;
-}
-
-#logoutbutton {
-    box-sizing: border-box;
-
-    position: fixed;
-    top: 0;
-    right: 0;
-    padding: 5px;
-
-    color: black;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 14px;
-}
-#loginsection {
-    display: block;
-}
-#loginbutton {
-    text-align: center;
-    box-sizing: border-box;
-    border: 1px solid black;
-    padding: 5px;
-    width: 100px;
-    height: 50px;
-    background-color: red;
-    color: black;
-    border-radius: 10px;
-    text-decoration: none;
-}
-
-#loginbox {
-    font-size: 25px;
-    margin-left: 25%;
-    text-align: center;
-    box-sizing: border-box;
-    border: 1px solid black;
-    padding: 5px;
-    color: black;
-    border-radius: 10px;
-    text-decoration: none;
-}
-
-#returnhomebutton {
-    text-align: center;
-    box-sizing: border-box;
-    border: 1px solid black;
-
-    padding: 5px;
-    width: 100px;
-    height: 50px;
-    background-color: red;
-    color: black;
-    border-radius: 10px;
-    text-decoration: none;
-}
-
-#navbarlinks {
+/* //////////////////////////////////////THANK YOU PAGE STYLES//////////////////////////////////////////////////// */
+#thankyoupagecontainer {
+    min-height: 100vh;
     width: 100%;
-    margin-left: 10px;
     display: flex;
+    flex-direction: column;
+}
+
+/* /////////////////////////////////////////VIEW SIGNATURES STYLES///////////////////////////////////////////////////////// */
+
+#viewsignaturescontainer {
+    min-height: 100vh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flexcol {
+    width: 33.33%;
+}
+
+.listofsigners {
+    margin-top: 2%;
+    margin-left: 10%;
     flex-direction: row;
-}
-
-.partial {
-    width: 100%;
-    color: red;
+    font-size: 2em;
     text-decoration: none;
-    background-color: rgb(72, 144, 205);
-    font-size: 40px;
-    padding: 20px;
-    margin-left: -10px;
-    width: 100%;
-    height: 100px;
-}
-.partial a {
-    text-decoration: none;
-}
-
-.placeholder {
-    margin-left: -10px;
-    width: 100%;
-    height: 250px;
-}
-.profileeditor {
-    top: 50%;
-    font-size: 25px;
-    left: 20%;
-    border: blue solid 6px;
-}
-
-input .blacktext {
     color: black;
-    font-weight: bolder;
+    font-family: "Roboto", sans-serif;
+}
+.listofsigners a {
+    text-decoration: none;
+    color: black;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////// */
+
+#profileeditorcontainer {
+    /* position: absolute; */
+    min-height: 100vh;
+    min-width: 100vw;
+    flex-direction: column;
 }
 
 .citybox {
     border: 1px solid red;
 }
 
-.listofsigners:after {
-    display: table;
-    clear: both;
-}
-.listofsigners {
-    left: 20%;
-    border: blue solid 6px;
-    height: 600px;
-}
-
-.flexcol {
-    float: left;
-    width: 33.33%;
-}
 .flexcol2 {
     float: left;
     width: 48%;
 }
+
+.flexspacearound {
+    justify-content: space-around;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////// */
+
+#signersbycitycontainer {
+    /* position: absolute; */
+    min-height: 100vh;
+    min-width: 100vw;
+    flex-direction: column;
+}
+
+/* ///////////////////////CAROUSEL CLASSES/////////////////////////////////////// */

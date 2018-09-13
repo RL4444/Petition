@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
         <link rel="stylesheet" href="/stylesheet.css">
         <meta charset="utf-8">
-        <title>{{city}} signers</title>
     </head>
 
-    <body>
+<body>
 
-<h1>This is the list of signers for <strong>{{city}}</strong></h1>
+<div id="signersbycitycontainer">
+        <div class="headbox">
+            <div id="lefthead">
+                <h1 class="boldh1">  SAVE THE BEES</h1>
+            </div>
+            <div id="righticonsmall">
+                <a href="/thankyoupage"> CHANGE SIGNATURE</a>
+                <a href="/editprofile">YOUR PROFILE</a>
+                <a href="/loggedout">LOG OUT</a>
 
-
-<h2>Total signers: {{length}}</h2>
-
-<div class="citybox">
-
-
-<div class="listofsigners">
-
-    {{#content}}
-            <div class="flexcol2">
-                  {{#if homepage}}
-                    <a href="{{homepage}}">{{first_name}} {{last_name}}</a>
-                  {{else}}
-                    {{first_name}} {{last_name}}
-                  {{/if}}
             </div>
 
-              <div class="flexcol2">
-                  {{#if age}}
-                    , {{age}}
-                  {{/if}}
+
+        </div>
+
+
+        <div id="contentbox">
+            <div>
+                <h2 class="lightsubhead">This is the list of signers for {{city}}</h2>
             </div>
-    <!-- <div class="date-signature">{{created_at}}</div> -->
-    {{/content}}
+            <div>
+                <h2 class="lightsubhead">Total signers: {{length}}</h2>
+            </div>
 
-</div>
-</div>
-<div class="placeholder">
+            <div class="listofsigners">
 
-</div>
+                {{#content}}
+                        <div class="flexcol2">
+                              {{#if homepage}}
+                                <a href="{{homepage}}">{{first_name}} {{last_name}}, </a>
+                              {{else}}
+                                {{first_name}} {{last_name}}, 
+                              {{/if}}
+                        </div>
 
-<div class="return">
-  To see the list of all signers please click <a href="/viewsignatures">HERE</a>
-</div>
+                          <div class="flexcol2">
+                              {{#if age}}
+                                [{{age}}]
+                              {{/if}}
+                        </div>
+                {{/content}}
+            </div>
+        </div>
+    </div>
 </body>
 
 

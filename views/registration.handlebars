@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+
+        <link rel="stylesheet" href="stylesheet.css">
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <!-- <p id="errormessage"> {{ error }} </p> -->
+        <div id="registrationpagecontainer">
+                <div class="headbox">
+                    <div id="lefthead">
+                        <h1 class="boldh1">  SAVE THE BEES</h1>
+                    </div>
+                    <div id="righticon">
+                        <a href="/"> INFO </a>
+                        <a href="/login"> LOGIN </a>
+
+                    </div>
+                </div>
+                <form  method="post">
+                <div id="registerbox">
+                    <p id="errormessage"> {{ error }} </p>
+
+                            <div class="formitem">
+                                <input type="text" name="firstname" placeholder="firstname">
+                            </div>
+                            <div class="formitem">
+                                <input type="text" name="lastname" placeholder="lastname">
+                            </div>
+                            <div class="formitem">
+                                <input type="text" name="email" placeholder="email">
+                            </div>
+                            <div class="formitem">
+                            <input type="password" name="password" placeholder="password">
+                            </div>
+                            <div class="formitem">
+                            <button class="loginbutton" type="submit">NEXT</button>
+                            </div>
+
+
+
+                </div>
+                    </form>
+        </div>
+
+
+
+</body>
+
+</html>

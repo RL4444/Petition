@@ -4,48 +4,44 @@
         <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
         <link rel="stylesheet" href="stylesheet.css">
         <meta charset="utf-8">
-        <title>HOME STYLING</title>
+
     </head>
 
     <body>
-        {{> headergfx}}
+        <div id="loginpagecontainer">
+            <div class="headbox">
+                <div id="lefthead">
+                    <h1 class="boldh1">  SAVE THE BEES</h1>
+                </div>
+                <div id="righticon">
+                    <a href="/registration"> SIGN PETITION </a>
+                    <a href="/"> INFO </a>
 
-        <h1>Welcome Friend!</h1>
+                </div>
 
-        <div id="login">
 
-                <form  method="post">
-                    <div class="pairs">
-                    <p>email</p>
-                    <input type="text" name="email" placeholder="email">
+            </div>
+            <form  method="post">
+                <div id="login">
+
+                    <div class="formitem">
+
+                        <input type="text" name="email" placeholder="email">
                     </div>
 
-                    <div class="pairs">
-                    <p>password</p>
-                    <input type="password" name="password" placeholder="password">
-                    <button id="loginbutton" type="submit">login</button>
+                    <div class="formitem">
+
+                        <input type="password" name="password" placeholder="password">
                     </div>
-
-
-
-
-                </form>
-        </div>
+                    <div class="formitem">
+                        <button class="loginbutton" type="submit">LOGIN</button>
+                    </div>
+                </div>
+            </form>
 
         <p id="errormessage"> {{ error }} </p>
 
-        <div class="newuser">
-
-
-            <p>new user with us?   <a href="/" type="button">  click here</a></p>
-
-
-
         </div>
-
-
-
-
     </body>
 
 

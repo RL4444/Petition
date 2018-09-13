@@ -4,45 +4,49 @@
         <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
         <link rel="stylesheet" href="stylesheet.css">
         <meta charset="utf-8">
-        <title>HOME STYLING</title>
     </head>
 
     <body>
-        <div class="navigationbar">
+        <div id="newsignercontainer">
 
-        {{>headergfxdonsolo}}
+            <div class="headbox">
+                <div id="lefthead">
+                    <h1 class="boldh1">  SAVE THE BEES</h1>
+                </div>
+                <div id="righticonsmall">
+                    <a href="/viewsignatures"> OTHER SIGNERS</a>
+                    <a href="/editprofile">YOUR PROFILE</a>
+                    <a href="/loggedout">LOG OUT</a>
+
+                </div>
 
 
-        <h1>HOME</h1>
-<div class="form">
-
-
-<form  method="post">
-    <p id="errormessage"> {{ error }} </p>
-    <div class="pairs">
-        <p></p>
-        <input type="text" name="firstname" placeholder="firstname" >
-    </div>
-
-    <div class="pairs">
-        <p></p>
-    <input type="text" name="lastname" placeholder="lastname" >
-    <button id="submit-button" type="submit">Submit Signature</button>
-    </div>
-
-    <div class="pairs">
-    <p>Write in the box below!</p>
-    <canvas id="signature" type="text" width="600" height="150"></canvas>
-    <input id="signatureInput" type="hidden" name="signature" value="{{signatureImage}}">
-
-</form>
-    <button id="clearcanvas" type="button" name="clear">Clear Signature</button>
-</div>
-</div>
-
-{{> nav }}
+            </div>
+                <form  method="post">
+                <div id="canvasbox">
+                    <p id="errormessage"> {{ error }} </p>
+                    <div class="formitem">
+                        <input type="text" name="firstname" placeholder="firstname" >
+                    </div>
+                    <div class="formitem">
+                        <input type="text" name="lastname" placeholder="lastname" >
+                    </div>
+                    <div class="formitem">
+                        <p>Write Your Signature In The Box Below</p>
+                    </div>
+                    <div class="formitem">
+                        <canvas id="signature" type="text" width="600" height="150"></canvas>
+                        <input id="signatureInput" type="hidden" name="signature" value="{{signatureImage}}">
+                    </div>
+                    <div class="formitem">
+                        <button class="loginbutton" type="submit">Submit Signature</button>
+                    </div>
+                    </form>
+                    <div class="formitem">
+                        <button id="clear"  type="button" name="clear">Clear Signature</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
-
-
-
 </html>

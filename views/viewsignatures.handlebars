@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+
         <link rel="stylesheet" href="stylesheet.css">
         <meta charset="utf-8">
-        <title>VIEW SIGNATURES</title>
+
     </head>
     <body>
-        {{>headergfxdonsolo}}
+        <div id="viewsignaturescontainer">
 
-        <div class="navigationbar">
-        {{> nav }}
+            <div class="headbox">
+                <div id="lefthead">
+                    <h1 class="boldh1">  SAVE THE BEES</h1>
+                </div>
+                <div id="righticonsmall">
+                    <a href="/thankyoupage"> CHANGE SIGNATURE</a>
+                    <a href="/editprofile">YOUR PROFILE</a>
+                    <a href="/loggedout">LOG OUT</a>
+
+                </div>
+
+
+            </div>
+
+
+            <div id="contentbox">
+                <div class="formitem">
+                    <h2 class="lightsubhead"> LIST OF {{ length }} PEOPLE WHO AGREE WITH YOU</h2>
+                </div>
+
+                <div class="listofsigners">
+                    {{#content}}
+                        <div class="flexcol">
+                                {{#if homepage}}
+                                  <a href="{{homepage}}">{{first_name}} {{last_name}}</a>
+                                {{else}}
+                                  {{first_name}} {{last_name}}
+                                {{/if}}
+                        </div>
+
+                        <div class="flexcol">
+                                {{#if age}}
+                                  [ {{age}} ]
+                                {{/if}}
+                        </div>
+
+                        <div class="flexcol">
+                                {{#if city}}
+                                   <a href="/viewsignatures/{{city}}">{{city}}</a>
+                                {{/if}}
+                        </div>
+                    {{/content}}
+
+                </div>
+            </div>
         </div>
-
-
-
-        <h1> LIST OF {{ length }} PEOPLE WHO AGREE WITH YOU</h1>
-
-        <div class="listofsigners">
-            {{#content}}
-                <div class="flexcol">
-                        {{#if homepage}}
-                          <a href="{{homepage}}">{{first_name}} {{last_name}}</a>
-                        {{else}}
-                          {{first_name}} {{last_name}}
-                        {{/if}}
-                </div>
-
-                <div class="flexcol">
-                        {{#if age}}
-                          , {{age}}
-                        {{/if}}
-                </div>
-
-                <div class="flexcol">
-                        {{#if city}}
-                          , <a href="/viewsignatures/{{city}}">{{city}}</a>
-                        {{/if}}
-                </div>
-            {{/content}}
-        </div>
-
-        <h1>Not what you were looking for?
-        <a href="/thankyoupage">Back up</a>
-        </h1>
     </body>
 </html>

@@ -125,16 +125,22 @@ exports.returnAllUsers = function() {
 };
 
 exports.returnUser = function(email) {
-    const q = `SELECT hashed_password FROM users WHERE email = $1;`;
+    const q = `SELECT * FROM users WHERE email = $1;`;
     const params = [email];
     return db.query(q, params).then(results => {
         return results.rows[0];
     });
 };
 
-exports.getSigById = function(signatureId) {
+exports.getSigById = function(userId) {
     const q = `SELECT signature FROM signatures WHERE user_id=$1;`;
-    return db.query(q, [signatureId]).then(results => {
+    return db.query(q, [userId]).then(results => {
+        return results.rows[0];
+    });
+};
+exports.getAllSigByUserId = function(userId) {
+    const q = `SELECT * FROM signatures WHERE user_id=$1;`;
+    return db.query(q, [userId]).then(results => {
         return results.rows[0];
     });
 };

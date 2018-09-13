@@ -43,9 +43,18 @@ app.use(express.static("public"));
 
 ///////////HOME PAGE // NEW USER PAGE//////////////
 app.get("/", (req, res) => {
-    console.log("hi Dr Crane");
     if (req.cookies.signed != "signed") {
-        res.render("home", {
+        res.render("landingpage", {
+            layout: "main"
+            // error: "Please fill in ALL fields or Log in" // link that to your handle bars main with {{ error }}
+        });
+    } else {
+        res.redirect("/alreadysigned");
+    }
+});
+app.get("/registration", (req, res) => {
+    if (req.cookies.signed != "signed") {
+        res.render("registration", {
             layout: "main"
             // error: "Please fill in ALL fields or Log in" // link that to your handle bars main with {{ error }}
         });
@@ -54,7 +63,7 @@ app.get("/", (req, res) => {
     }
 });
 
-app.post("/", (req, res, next) => {
+app.post("/registration", (req, res, next) => {
     if (
         !req.body.firstname ||
         !req.body.lastname ||
@@ -82,18 +91,13 @@ app.post("/", (req, res, next) => {
                     req.body.email,
                     hashedPassword
                 ).then(newUser => {
-                    // console.log(newUser);
                     req.session.userId = newUser.id;
-                    // req.session.userId = req.session.signatureId;
                     res.redirect("/additionalinfo");
                 });
             });
         }
     }
 });
-//.catch(err => {
-//console.log(err);
-// });
 
 ///////////////////ADDITIONAL INFO PAGE/////////////////////
 
@@ -114,26 +118,26 @@ app.get("/additionalinfo", (req, res) => {
 //add 4th argument to addinfo db function req.ession.userId = 4th argument
 
 app.post("/additionalinfo", (req, res, next) => {
-    console.log("from post rout of add info: ", req.session.userId);
+    // console.log("from post rout of add info: ", req.session.userId);
     let userid = req.session.userId;
     let city = req.body.city;
     let cityCaps = city.toUpperCase();
     db.addInfo(Number(req.body.age), cityCaps, req.body.homepage, userid).then(
         newInfo => {
-            console.log("new info: ", newInfo);
+            // console.log("new info: ", newInfo);
             res.redirect("/newsigner");
         }
     );
 });
 
 /////////////////LOGINPAGE///////////////////////
-app.get("/loginpage", (req, res) => {
+app.get("/login", (req, res) => {
     res.render("loginpage", {
         layout: "main"
     });
 });
 
-app.post("/loginpage", (req, res, next) => {
+app.post("/login", (req, res, next) => {
     var comparePassword = "";
 
     if (req.body.email == "" || req.body.password == "") {
@@ -142,35 +146,38 @@ app.post("/loginpage", (req, res, next) => {
             error: "Please fill all the required information"
         });
     } else {
-        db.returnAllUsers()
-            .then(allUsers => {
-                db.returnUser(req.body.email).then(user => {
-                    console.log(user);
-                });
-                var arrayRow;
-                var userId;
-                for (var i = 0; i < allUsers.length; i++) {
-                    if (allUsers[i].email == req.body.email) {
-                        passToCompare = allUsers[i].hashed_password;
-                        userId = allUsers[i].id;
-                        arrayRow = i;
-                    }
-                }
-                if (passToCompare == "") {
+        db.returnUser(req.body.email)
+            .then(user => {
+                if (user == undefined) {
                     res.render("loginpage", {
                         layout: "main",
-                        error: "No user found"
+                        error: "User does not exist. Please register"
                     });
                 } else {
-                    bc.checkPassword(req.body.password, passToCompare)
+                    console.log("user from login server", user);
+                    bc.checkPassword(req.body.password, user.hashed_password)
                         .then(samePasswordChecker => {
                             console.log(
-                                "are passwords the same?",
+                                "samePasswordChecker",
                                 samePasswordChecker
                             );
                             if (samePasswordChecker) {
-                                req.session.userId = userId;
-                                res.redirect("/thankyoupage");
+                                req.session.userId = user.id;
+                                // res.redirect("/thankyoupage");
+                                db.getAllSigByUserId(req.session.userId).then(
+                                    siginfo => {
+                                        // console.log("siginfo", siginfo);
+                                        req.session.signatureId = siginfo.id;
+                                        // req.session.firstname =
+                                        //     siginfo.first_name;
+                                        // req.session.lastname =
+                                        //     siginfo.last_name;
+                                        // req.session.signature =
+                                        //     siginfo.signature;
+                                        console.log("req.session", req.session);
+                                        res.redirect("/thankyoupage");
+                                    }
+                                );
                             } else {
                                 res.render("loginpage", {
                                     layout: "main",
@@ -189,38 +196,26 @@ app.post("/loginpage", (req, res, next) => {
             });
     }
 });
+
 //////////////////NEW SIGNER PAGE//////////////////
 app.get("/newsigner", (req, res) => {
-    console.log("get route user id: ", req.session.userId);
-    // console.log(req.session);
+    //in here make a db query to chek if the user has a signature and redirect to the thank you page if they
     if (!req.session.userId) {
-        res.redirect("/loginpage");
-    }
-    // else
-    // {
-    // console.log("what does this have? ", req.session.signatureId);
-    // if (req.session.signatureId) {
-    //     res.redirect("/thankyoupage");
-    // }
-    else {
+        res.redirect("/login");
+    } else {
         res.render("newsigner", {
             // csrfToken: req.csrfToken(),
             layout: "main"
         });
-
-        // else {
-        //     if (something is present)
-        //     res.redirect("/alreadysigned");
-    } // }
-    // }
+    }
 });
 
 //make middleware to redirect people to the sign up page if they do not have a session value
 // app.use()
 
 app.post("/newsigner", (req, res) => {
-    console.log("whole session in newsigner post rou: ", req.session);
-    console.log("sigid: ", req.session.signatureId);
+    // console.log("whole session in newsigner post rou: ", req.session);
+    // console.log("sigid: ", req.session.signatureId);
     var userid = req.session.userId;
     if (!req.body.firstname || !req.body.lastname || !req.body.signature) {
         res.render("newsigner", {
@@ -229,7 +224,7 @@ app.post("/newsigner", (req, res) => {
         });
     } else {
         if (!req.session.signatureId) {
-            console.log("newSig.id =", req.session.signatureId);
+            // console.log("newSig.id =", req.session.signatureId);
 
             db.insertSig(
                 userid,
@@ -242,11 +237,7 @@ app.post("/newsigner", (req, res) => {
                 res.redirect("/thankyoupage");
             });
         } else {
-            console.log(
-                "there should be no id here: ",
-                req.session.signatureId
-            );
-            console.log("userid variable: ", userid);
+            // console.log("userid variable: ", userid);
             db.updateSig(
                 userid,
                 req.body.firstname,
@@ -261,41 +252,17 @@ app.post("/newsigner", (req, res) => {
     }
 });
 
-// *****************USING bcrypt to get the password*****************************
-//
-// app.get("/hash-practice", (req, res) => {
-//     bc.hashPassword("trustno1")
-//         .then(hashedPassword => {
-//             console.log("hashedPassword", hashedPassword);
-//
-//             bc.checkPassword("some nonesense password", hashedPassword).then(
-//                 doThePasswordsMatch => {
-//                     console.log("doThePasswordsMatch: ", doThePasswordsMatch);
-//                 }
-//             );
-//         })
-//         .catch(err => {
-//             console.log(err);
-//         });
-// });
-
 app.get("/thankyoupage/", (req, res) => {
+    console.log("it's getting to the ty route and the session is", req.session);
     if (!req.session.userId) {
-        res.redirect("/loginpage");
-    }
-    // else {
-    //     if (req.session.sigId == 0) {
-    //         res.redirect("/newsigner");
-    //     }
-    else {
+        res.redirect("/login");
+    } else {
         if (!req.session.signatureId) {
             res.redirect("/newsigner");
         } else {
             db.getSigById(req.session.userId)
                 .then(sig => {
-                    console.log(req.session.sigId);
-                    console.log("it's getting here");
-                    console.log("sig: ", sig);
+                    // console.log("sig: ", sig);
                     res.render("thankyoupage", {
                         layout: "main",
                         image: sig.signature
@@ -308,16 +275,12 @@ app.get("/thankyoupage/", (req, res) => {
     }
 });
 
-// app.post("/thankyoupage", (req, res) => {
-//     res.redirect("/viewsignatures");
-// });
-
 app.get("/viewsignatures/", (req, res) => {
     if (req.session.length == 0) {
         res.redirect("/loginpage");
     } else
         db.getSigPageInfo().then(allUsers => {
-            console.log(allUsers);
+            // console.log(allUsers);
             res.render("viewsignatures", {
                 layout: "main",
                 length: allUsers.length,
@@ -340,11 +303,11 @@ app.get("/viewsignatures/:citySelected", (req, res) => {
 });
 
 app.get("/editprofile", (req, res) => {
-    console.log("SignatureId from session: ", req.session.signatureId);
+    // console.log("SignatureId from session: ", req.session.signatureId);
     let j = req.session.userId;
-    console.log("session", req.session);
+    // console.log("session", req.session);
     db.getProfilePageInfo(j).then(allUsers => {
-        console.log(allUsers);
+        // console.log(allUsers);
         res.render("editprofile", {
             layout: "main",
             content: allUsers
@@ -357,12 +320,7 @@ app.get("/editprofile", (req, res) => {
 app.post("/editprofile", (req, res) => {
     if (!req.session.userId) {
         res.redirect("/");
-    }
-    // else {
-    //     if (!req.session.sigId) {
-    //         res.redirect("/newsigner");
-    //     }
-    else {
+    } else {
         if (!req.body.password) {
             let city = req.body.city;
             let cityCaps = city.toUpperCase();
@@ -382,7 +340,7 @@ app.post("/editprofile", (req, res) => {
                     .then(newUser => {
                         req.session.userId = newUser.id;
                         res.redirect("/thankyoupage");
-                        console.log(req.session.signatureImage);
+                        // console.log(req.session.signatureImage);
                     })
             );
         } else {
@@ -396,23 +354,14 @@ app.post("/editprofile", (req, res) => {
                     req.body.email,
                     hashedPassword
                 ).then(updatedUser => {
-                    console.log(updatedUser);
+                    // console.log(updatedUser);
                     db.addInfo(
                         Number(req.body.age),
                         cityCaps,
                         req.body.homepage,
                         req.session.userId
                     ).then(newUser => {
-                        // db.getSigById(req.session.userId).then(sig => {
-                        //     console.log(sig.signature);
-                        //
-                        // });
-                        console.log();
                         res.redirect("/thankyoupage");
-                        // req.session.userId = newUser.id;
-                        //
-
-                        // req.session.signatureId = newSig.id;
                     });
                 });
             });
@@ -421,6 +370,8 @@ app.post("/editprofile", (req, res) => {
     }
     req.session.sigId = {};
 });
+
+////////////////////////////ALREADY SIGNED PAGE///////////////////
 
 app.get("/alreadysigned/", (req, res) => {
     if (!req.session.userId) {
@@ -439,13 +390,8 @@ app.get("/alreadysigned/", (req, res) => {
 
 app.get("/loggedout", (req, res) => {
     req.session = null;
-    res.render("loggedout", {
-        layout: "main"
-        // signature: signatureImage
-    });
+    res.redirect("/");
 });
-
-////////////////////////////ALREADY SIGNED PAGE///////////////////
 
 //////////////////////////////LISTENING ON PORT////////////
 
@@ -453,26 +399,4 @@ app.listen(process.env.PORT || 8080, () => {
     console.log("go ahead caller, I'm listening");
 });
 
-// app.listen(process.env.PORT || 8080);
-
-////////////////////
-
 // ************************************************************
-
-//single route
-// function checkForSig(req, res, next) {
-//     console.log("check for sig middle ware running");
-//     console.log(req.session);
-//     if (!req.session.signatureId) {
-//         res.redirect("/");
-//     } else {
-//         console.log("you have a sigId, continue session");
-//         next();
-//     }
-// }
-// **************************
-// for signers/:cityname
-//
-// app.get(('viewsignatures'/:cityname), (req, res, next) {
-//         db.getCityFromInfo(req.params.cityname);
-// })

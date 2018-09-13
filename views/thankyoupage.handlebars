@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
-        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
         <link rel="stylesheet" href="/stylesheet.css">
         <meta charset="utf-8">
-        <title>THANK YOU PAGE</title>
     </head>
     <body>
-        {{> nav }}
+        <div id="thankyoupagecontainer">
+            <div class="headbox">
+                <div id="lefthead">
+                    <h1 class="boldh1">  SAVE THE BEES</h1>
+                </div>
+                <div id="righticonsmall">
+                    <a href="/viewsignatures"> OTHER SIGNERS</a>
+                    <a href="/editprofile">YOUR PROFILE</a>
+                    <a href="/loggedout">LOG OUT</a>
 
-        <h1>THANK YOU FOR SIGNING THE PETITION</h1>
-        <h2>to see a list of people who have signed for this noble cause click <a href="/viewsignatures">here</a> </h2>
-        <img src={{image}} alt="">
+                </div>
 
-        <form class="editprofilefooter"  method="post">
-            <a id="loginbutton" href="/viewsignatures">See Other Signers</a>
-            <a id="loginbutton" href="/editprofile">Edit Info</a>
-            <a id="loginbutton" href="/newsigner">Change Sig</a>
 
-        </form>
-
+            </div>
+            <div id="contentbox">
+                <div class="formitem">
+                    <h2 class="lightsubhead">THANK YOU FOR SIGNING THE PETITION</h1>
+                </div>
+                <div class="formitem">
+                    <h2>to see a list of people who have signed for this noble cause click <a href="/viewsignatures">here</a> </h2>
+                </div>
+                <div class="formitem">
+                    <img src={{image}} alt="">
+                </div>
+                <div class="flexspacearound">
+                <form class="editprofilefooter"  method="post">
+                    <a class="loginbutton" href="/viewsignatures">OTHER SIGNERS</a>
+                    <a class="loginbutton" href="/newsigner">CHANGE SIGNATURE</a>
+                </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
