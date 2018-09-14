@@ -24,33 +24,43 @@
             </div>
 
 
-            <div id="contentbox">
+            <div id="signerscontentbox">
                 <div class="formitem">
                     <h2 class="lightsubhead"> LIST OF {{ length }} PEOPLE WHO AGREE WITH YOU</h2>
                 </div>
 
                 <div class="listofsigners">
-                    {{#content}}
-                        <div class="flexcol">
+
+                        <div class="flexcolname">
+                            {{#content}}
                                 {{#if homepage}}
                                   <a href="{{homepage}}">{{first_name}} {{last_name}}</a>
                                 {{else}}
                                   {{first_name}} {{last_name}}
                                 {{/if}}
+
+                                {{/content}}
+
                         </div>
 
-                        <div class="flexcol">
+                        <div class="flexcolage">
+                            {{#content}}
                                 {{#if age}}
-                                  [ {{age}} ]
+                                  [{{age}}]
                                 {{/if}}
+
+                                {{/content}}
                         </div>
 
-                        <div class="flexcol">
+                        <div class="flexcolcity">
+                            {{#content}}
                                 {{#if city}}
                                    <a href="/viewsignatures/{{city}}">{{city}}</a>
                                 {{/if}}
+
+                                {{/content}}
                         </div>
-                    {{/content}}
+
 
                 </div>
             </div>

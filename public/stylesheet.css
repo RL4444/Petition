@@ -102,22 +102,24 @@ font-family: 'Open Sans', sans-serif;  -- light
 
 #contentbox {
     flex-direction: column;
-    margin-left: 1%;
+    margin-left: 3%;
     width: 40%;
 }
 
 #content {
-    background-color: rgba(117, 117, 117, 0.77);
+    /* background-color: rgba(117, 117, 117, 0.77); */
+    shape-outside: ellipse(150px 300px at 50% 50%);
     border-top: 3px solid white;
     margin-top: 1%;
     flex-direction: column;
-    text-align: justify;
+    /* text-align: left; */
     width: 100%;
     color: white;
-    font-family: "Roboto", sans-serif;
-    font-size: 1.4em;
-    padding: 8px;
-    border-radius: 4px;
+    /* font-family: "Roboto", sans-serif; */
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.2em;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 #links a {
@@ -312,11 +314,35 @@ canvas {
     flex-direction: column;
 }
 
-.flexcol {
-    width: 33.33%;
+.flexcolname {
+    min-width: 50%;
+    flex-direction: column;
+    margin-top: 2%;
+}
+.flexcolage {
+    font-weight: bold;
+
+    max-width: 15%;
+    flex-direction: column;
+    margin-top: 2%;
+}
+.flexcolcity {
+    width: 33%;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+#signerscontentbox {
+    flex-direction: column;
+    margin-left: 3%;
+    width: 40%;
+    min-height: 80vh;
 }
 
 .listofsigners {
+    text-align: left;
+    justify-content: space-around;
+    /* width: 30%; */
     margin-top: 2%;
     margin-left: 10%;
     flex-direction: row;
@@ -343,18 +369,12 @@ canvas {
     border: 1px solid red;
 }
 
-.flexcol2 {
-    float: left;
-    width: 48%;
-}
-
 .flexspacearound {
     justify-content: space-around;
 }
 /* ///////////////////////////////////////////////////////////////////////////////////////// */
 
 #signersbycitycontainer {
-    /* position: absolute; */
     min-height: 100vh;
     min-width: 100vw;
     flex-direction: column;

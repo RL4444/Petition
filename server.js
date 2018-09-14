@@ -45,8 +45,8 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     if (req.cookies.signed != "signed") {
         res.render("landingpage", {
-            layout: "main"
-            // error: "Please fill in ALL fields or Log in" // link that to your handle bars main with {{ error }}
+            layout: "main",
+            error: "Please fill in ALL fields or Log in" // link that to your handle bars main with {{ error }}
         });
     } else {
         res.redirect("/alreadysigned");
@@ -55,8 +55,8 @@ app.get("/", (req, res) => {
 app.get("/registration", (req, res) => {
     if (req.cookies.signed != "signed") {
         res.render("registration", {
-            layout: "main"
-            // error: "Please fill in ALL fields or Log in" // link that to your handle bars main with {{ error }}
+            layout: "main",
+            error: "Please fill in ALL fields or Log in" // link that to your handle bars main with {{ error }}
         });
     } else {
         res.redirect("/alreadysigned");
@@ -124,7 +124,6 @@ app.post("/additionalinfo", (req, res, next) => {
     let cityCaps = city.toUpperCase();
     db.addInfo(Number(req.body.age), cityCaps, req.body.homepage, userid).then(
         newInfo => {
-            // console.log("new info: ", newInfo);
             res.redirect("/newsigner");
         }
     );
@@ -163,17 +162,9 @@ app.post("/login", (req, res, next) => {
                             );
                             if (samePasswordChecker) {
                                 req.session.userId = user.id;
-                                // res.redirect("/thankyoupage");
                                 db.getAllSigByUserId(req.session.userId).then(
                                     siginfo => {
-                                        // console.log("siginfo", siginfo);
                                         req.session.signatureId = siginfo.id;
-                                        // req.session.firstname =
-                                        //     siginfo.first_name;
-                                        // req.session.lastname =
-                                        //     siginfo.last_name;
-                                        // req.session.signature =
-                                        //     siginfo.signature;
                                         console.log("req.session", req.session);
                                         res.redirect("/thankyoupage");
                                     }
@@ -372,21 +363,6 @@ app.post("/editprofile", (req, res) => {
 });
 
 ////////////////////////////ALREADY SIGNED PAGE///////////////////
-
-app.get("/alreadysigned/", (req, res) => {
-    if (!req.session.userId) {
-        res.redirect("/");
-    }
-    // else {
-    //     if (!req.session.sigId) {
-    //         res.redirect("/newsigner");
-    //     }
-    else
-        res.render("alreadysigned", {
-            layout: "main"
-        });
-    // }
-});
 
 app.get("/loggedout", (req, res) => {
     req.session = null;

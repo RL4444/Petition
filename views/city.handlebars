@@ -33,21 +33,25 @@
 
             <div class="listofsigners">
 
-                {{#content}}
-                        <div class="flexcol2">
+
+                        <div class="flexcolname">
+                            {{#content}}
                               {{#if homepage}}
                                 <a href="{{homepage}}">{{first_name}} {{last_name}}, </a>
                               {{else}}
-                                {{first_name}} {{last_name}}, 
+                                {{first_name}} {{last_name}},
                               {{/if}}
+                              {{/content}}
                         </div>
 
-                          <div class="flexcol2">
+                          <div class="flexcolage">
+                              {{#content}}
                               {{#if age}}
                                 [{{age}}]
                               {{/if}}
+                              {{/content}}
                         </div>
-                {{/content}}
+
             </div>
         </div>
     </div>
