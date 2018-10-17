@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    display: flex;
+    /* display: flex; */
 }
 
 /* //////BACKGROUND */
@@ -41,6 +41,41 @@ font-family: 'Open Sans', sans-serif;  -- light
     font-weight: lighter;
     font-size: 3em;
     color: white;
+}
+/* //////////////////////////// DATA MODAL ////////////////////////////  */
+
+#modal-container {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(49, 50, 49, 0.54);
+    height: 100vh;
+}
+
+#data-warning-modal {
+    border-radius: 8px;
+    text-align: center;
+    background-color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    margin-top: 10%;
+    padding-top: 15px;
+}
+.modal-text {
+    margin-top: 5%;
+}
+
+#data-warning-modal button {
+    margin-top: 20%;
 }
 
 /* ////////////////////////////LANDING PAGE////////////////////////// */
@@ -97,25 +132,25 @@ font-family: 'Open Sans', sans-serif;  -- light
 }
 
 #landingpagecontent {
+    display: flex;
     flex-direction: row;
 }
 
 #contentbox {
+    display: flex;
     flex-direction: column;
     margin-left: 3%;
     width: 40%;
 }
 
 #content {
-    /* background-color: rgba(117, 117, 117, 0.77); */
     shape-outside: ellipse(150px 300px at 50% 50%);
     border-top: 3px solid white;
     margin-top: 1%;
+    display: flex;
     flex-direction: column;
-    /* text-align: left; */
     width: 100%;
     color: white;
-    /* font-family: "Roboto", sans-serif; */
     font-family: "Open Sans", sans-serif;
     font-size: 1.2em;
     padding: 15px;
@@ -136,6 +171,7 @@ font-family: 'Open Sans', sans-serif;  -- light
 }
 #links {
     margin-top: 2%;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -172,6 +208,7 @@ font-family: 'Open Sans', sans-serif;  -- light
 #login {
     font-family: "Roboto", sans-serif;
     margin-top: 10%;
+    display: flex;
     flex-direction: column;
     width: 40%;
 }
@@ -180,7 +217,7 @@ font-family: 'Open Sans', sans-serif;  -- light
     font-family: "Roboto", sans-serif;
     text-decoration: none;
     font-size: 3em;
-    margin-left: 10%;
+    margin-left: 5%;
     margin-top: 5%;
 }
 .formitem p,
@@ -202,46 +239,64 @@ h2 {
     background-color: rgb(224, 223, 42);
 }
 
+button {
+    width: 90%;
+    text-align: center;
+    color: black;
+    margin-top: 5%;
+    margin-left: 5%;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    padding: 10px 20px 10px;
+    background-color: rgb(224, 223, 42);
+}
+button p {
+    text-align: center;
+}
+
 .loginbutton {
+    margin-left: 5%;
+    text-align: center;
+}
+
+.loginbutton {
+    width: 90%;
     text-decoration: none;
+    text-align: center;
     color: black;
     margin-top: 5%;
-    margin-left: 10%;
+    margin-left: 5%;
     font-family: "Roboto", sans-serif;
-    font-size: 3em;
+    font-size: 1em;
+    padding: 10px 20px 10px;
     background-color: rgb(224, 223, 42);
 }
-.loginbutton a {
-    padding: 10px;
-    text-decoration: none;
-    color: black;
-    margin-top: 5%;
-    margin-left: 10%;
-    font-family: "Roboto", sans-serif;
-    font-size: 3em;
-    background-color: rgb(224, 223, 42);
-}
+
 #clear {
+    width: 90%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
     margin-top: 5%;
-    margin-left: 10%;
+    margin-left: 5%;
     font-family: "Roboto", sans-serif;
-    font-size: 3em;
+    font-size: 1em;
+    padding: 20px 20px 20px;
     background-color: rgb(224, 223, 42);
+}
+button:hover {
+    font-family: "Roboto", sans-serif;
+    background-color: rgb(231, 245, 140);
+    cursor: pointer;
 }
 .loginbutton:hover {
-    margin-top: 5%;
-    margin-left: 10%;
     font-family: "Roboto", sans-serif;
-    font-size: 3.1em;
-    background-color: tomato;
+    background-color: rgb(231, 245, 140);
     cursor: pointer;
 }
 #clear:hover {
-    margin-top: 5%;
-    margin-left: 10%;
     font-family: "Roboto", sans-serif;
-    font-size: 3.1em;
-    background-color: tomato;
+    background-color: rgb(195, 254, 58);
     cursor: pointer;
 }
 /* //////////////////////REGISTRATION///////////////////////////////////////// */
@@ -255,6 +310,7 @@ h2 {
 #registerbox {
     font-family: "Roboto", sans-serif;
     margin-top: 5%;
+    display: flex;
     flex-direction: column;
     width: 40%;
 }
@@ -286,6 +342,7 @@ h2 {
 #canvasbox {
     font-family: "Roboto", sans-serif;
     margin-top: 2%;
+    display: flex;
     flex-direction: column;
     width: 40%;
 }
@@ -316,6 +373,7 @@ canvas {
 
 .flexcolname {
     min-width: 50%;
+    display: flex;
     flex-direction: column;
     margin-top: 2%;
 }
@@ -323,16 +381,19 @@ canvas {
     font-weight: bold;
 
     max-width: 15%;
+    display: flex;
     flex-direction: column;
     margin-top: 2%;
 }
 .flexcolcity {
     width: 33%;
+    display: flex;
     flex-direction: column;
     margin-top: 2%;
 }
 
 #signerscontentbox {
+    display: flex;
     flex-direction: column;
     margin-left: 3%;
     width: 40%;
@@ -342,9 +403,9 @@ canvas {
 .listofsigners {
     text-align: left;
     justify-content: space-around;
-    /* width: 30%; */
     margin-top: 2%;
     margin-left: 10%;
+    display: flex;
     flex-direction: row;
     font-size: 2em;
     text-decoration: none;
@@ -356,12 +417,15 @@ canvas {
     color: black;
 }
 
+.editprofilefooter {
+}
+
 /* ///////////////////////////////////////////////////////////////////////////////////////// */
 
 #profileeditorcontainer {
-    /* position: absolute; */
     min-height: 100vh;
     min-width: 100vw;
+    display: flex;
     flex-direction: column;
 }
 
@@ -370,6 +434,7 @@ canvas {
 }
 
 .flexspacearound {
+    margin-left: 5%;
     justify-content: space-around;
 }
 /* ///////////////////////////////////////////////////////////////////////////////////////// */
@@ -377,6 +442,7 @@ canvas {
 #signersbycitycontainer {
     min-height: 100vh;
     min-width: 100vw;
+    display: flex;
     flex-direction: column;
 }
 

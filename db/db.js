@@ -151,40 +151,23 @@ exports.getAddInfo = function(userid) {
         return results.rows[0];
     });
 };
-// exports.getSigPageInfo = function() {
-//     const q = `SELECT users_profiles.age, users_profiles.city, signatures.first_name
-// FROM users_profiles
-// LEFT JOIN signatures ON users_profiles.id=signatures.user_id;`;
-//
-//     return db.query(q).then(results => {
-//         console.log(results.rows[3]);
-//         return results.rows;
-//     });
-// };
+
 exports.getSigPageInfo = function() {
     const q = `SELECT * FROM signatures
               INNER JOIN users_profiles
               ON signatures.user_id = users_profiles.id;`;
 
     return db.query(q).then(results => {
-        console.log(results.rows);
+        // console.log(results.rows);
         return results.rows;
     });
 };
-// exports.getProfilePageInfo = function() {
-//     const q = `SELECT users_profiles.age, users_profiles.city, users_profiles.homepage,
-//     users.first_name, users.last_name, users.email, users.hashed_password
-// FROM users_profiles
-// LEFT JOIN users ON users_profiles.id=users.id;`;
-//     return db.query(q).then(results => {
-//         return results.rows[0];
-//     });
-// };
+
 exports.getProfilePageInfo = function(userId) {
     const q = `SELECT *
 FROM users
 LEFT JOIN users_profiles ON users.id = users_profiles.users_id WHERE users.id = $1`;
-    console.log("usersId from data base getProfilePageInfo", userId);
+    // console.log("usersId from data base getProfilePageInfo", userId);
     return db.query(q, [userId]).then(results => {
         return results.rows[0];
     });

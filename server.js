@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const bc = require("./db/bcrypt");
-// const csurf = require("csurf");
+const csurf = require("csurf");
 
 app.use(
     cookieSession({
@@ -18,12 +18,7 @@ app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use(csurf()); //middleware fore csurf
-// app.use(function(req, res, next) {
-//     //csurf handling requests and encrypting them
-//     res.locals.csrfToken = req.csrfToken();
-//     next();
-// });
+app.use(csurf()); //middleware fore csurf
 
 app.engine(
     "handlebars",
@@ -34,6 +29,10 @@ app.engine(
 app.set("view engine", "handlebars");
 
 ////////////////middleware
+app.use(function(req, res, next) {
+    res.locals.csrfToken = req.csrfToken();
+    next();
+});
 
 //global middleware
 
@@ -156,16 +155,16 @@ app.post("/login", (req, res, next) => {
                     console.log("user from login server", user);
                     bc.checkPassword(req.body.password, user.hashed_password)
                         .then(samePasswordChecker => {
-                            console.log(
-                                "samePasswordChecker",
-                                samePasswordChecker
-                            );
+                            // console.log(
+                            //     "samePasswordChecker",
+                            //     samePasswordChecker
+                            // );
                             if (samePasswordChecker) {
                                 req.session.userId = user.id;
                                 db.getAllSigByUserId(req.session.userId).then(
                                     siginfo => {
                                         req.session.signatureId = siginfo.id;
-                                        console.log("req.session", req.session);
+                                        // console.log("req.session", req.session);
                                         res.redirect("/thankyoupage");
                                     }
                                 );
@@ -195,7 +194,6 @@ app.get("/newsigner", (req, res) => {
         res.redirect("/login");
     } else {
         res.render("newsigner", {
-            // csrfToken: req.csrfToken(),
             layout: "main"
         });
     }
@@ -205,8 +203,6 @@ app.get("/newsigner", (req, res) => {
 // app.use()
 
 app.post("/newsigner", (req, res) => {
-    // console.log("whole session in newsigner post rou: ", req.session);
-    // console.log("sigid: ", req.session.signatureId);
     var userid = req.session.userId;
     if (!req.body.firstname || !req.body.lastname || !req.body.signature) {
         res.render("newsigner", {

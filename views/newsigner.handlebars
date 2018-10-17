@@ -39,11 +39,12 @@
                         <input id="signatureInput" type="hidden" name="signature" value="{{signatureImage}}">
                     </div>
                     <div class="formitem">
-                        <button class="loginbutton" type="submit">Submit Signature</button>
+                        <button class="loginbutton" type="submit">SUBMIT SIG</button>
                     </div>
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
                     </form>
                     <div class="formitem">
-                        <button id="clear"  type="button" name="clear">Clear Signature</button>
+                        <button id="clear"  type="button" name="clear">CLEAR SIG</button>
                     </div>
                 </div>
             </div>
